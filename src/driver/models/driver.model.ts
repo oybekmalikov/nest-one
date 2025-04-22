@@ -1,4 +1,12 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import {
+	BelongsToMany,
+	Column,
+	DataType,
+	Model,
+	Table,
+} from "sequelize-typescript";
+import { MachineDriver } from 'src/machine-driver/models/machine-driver.model'
+import { Machine } from "src/machine/models/machine.model";
 
 interface IDriverCreationAttr {
 	firstName: string;
@@ -22,4 +30,7 @@ export class Driver extends Model<Driver, IDriverCreationAttr> {
 	phoneNumber: string;
 	@Column({ type: DataType.STRING })
 	driverLicense: string;
+
+	@BelongsToMany(() => Machine, () => MachineDriver)
+	machines: Machine[];
 }
