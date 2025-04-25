@@ -1,9 +1,9 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
-import { CompanyService } from "src/company/company.service";
 import { CreateBuilderDto } from "./dto/create-builder.dto";
 import { UpdateBuilderDto } from "./dto/update-builder.dto";
 import { Builder } from "./models/builder.model";
+import { CompanyService } from '../company/company.service'
 
 @Injectable()
 export class BuildersService {
@@ -12,6 +12,7 @@ export class BuildersService {
 		private readonly companyServise: CompanyService
 	) {}
 	async create(createBuilderDto: CreateBuilderDto) {
+		console.log(createBuilderDto);
 		const { companyId } = createBuilderDto;
 		const company = await this.companyServise.findOneCompanies(companyId);
 		if (!company) {

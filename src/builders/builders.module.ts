@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common";
 import { SequelizeModule } from "@nestjs/sequelize";
-import { CompanyModule } from "src/company/company.module";
 import { BuildersController } from "./builders.controller";
 import { BuildersService } from "./builders.service";
 import { Builder } from "./models/builder.model";
+import { CompanyModule } from '../company/company.module'
 
 @Module({
 	imports: [SequelizeModule.forFeature([Builder]), CompanyModule],
